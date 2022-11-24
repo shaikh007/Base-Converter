@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Number System Converter</title>
+    <title>Base Converter</title>
 
     <link rel="stylesheet" href="style.css">
     <script src="App.js" defer></script>
@@ -13,7 +13,7 @@
 
 <body>
     <main>
-        <h1>Number System Converter</h1>
+        <h1>Base Converter</h1>
 
         <div id="select-container">
             <select id="from-select">
@@ -34,11 +34,13 @@
         <div id="input-container">
             <input type="text" id="from-input" placeholder="Binary Number">
             <span id="error"></span>
+            <button id="convert-button">Convert</button>
+            <input type="text" id="to-input" placeholder="Binary Number" readonly>
         </div>
 
-        <button id="convert-button">Convert</button>
 
-        <input type="text" id="to-input" placeholder="Binary Number" readonly>
+
+
     </main>
 
 
