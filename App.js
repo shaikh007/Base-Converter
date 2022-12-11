@@ -142,18 +142,19 @@ const from = document.getElementById("from-input");
 const to = document.getElementById("to-input");
 const error = document.getElementById("error");
 
-let initialBase = "Binary",
-    lastBase = "Binary";
+let initialBase; //= "Binary",
+let lastBase; //= "Binary";
 
-fromSelected.addEventListener("change", function() {
-    initialBase = fromSelected.options[fromSelected.selectedIndex].text;
-    from.placeholder = initialBase + " Number";
-});
 
-toSelected.addEventListener("change", function() {
-    lastBase = toSelected.options[toSelected.selectedIndex].text;
-    to.placeholder = lastBase + " Number";
-});
+// fromSelected.addEventListener("change", function() {
+//     initialBase = fromSelected.options[fromSelected.selectedIndex].text;
+//     from.placeholder = initialBase + " Number";
+// });
+
+// toSelected.addEventListener("change", function() {
+//     lastBase = toSelected.options[toSelected.selectedIndex].text;
+//     to.placeholder = lastBase + " Number";
+// });
 
 from.addEventListener("input", function() {
     error.style.display = "none";
@@ -161,10 +162,17 @@ from.addEventListener("input", function() {
 
 let fromValue;
 document.getElementById("convert-button").addEventListener("click", function() {
+    initialBase = fromSelected.options[fromSelected.selectedIndex].text;
+    from.placeholder = initialBase + " Number";
+    console.log("first" + initialBase);
+    lastBase = toSelected.options[toSelected.selectedIndex].text;
+    to.placeholder = lastBase + " Number";
+    console.log("second" + lastBase);
+
     switch (initialBase) {
         case "Binary":
             fromValue = from.value;
-            if (/^[01]*$/.test(fromValue)) {
+            if (/^[01]*$/.test(fromValue)) { //110011->
                 switch (lastBase) {
                     case "Decimal":
                         to.value = parseInt(fromValue, 2);
@@ -187,7 +195,7 @@ document.getElementById("convert-button").addEventListener("click", function() {
 
         case "Decimal":
             fromValue = from.value;
-            if (/^[0-9]*$/.test(fromValue)) {
+            if (/^[0-9]*$/.test(fromValue)) {//12345
                 switch (lastBase) {
                     case "Binary":
                         to.value = Math.abs(fromValue).toString(2);
@@ -211,7 +219,7 @@ document.getElementById("convert-button").addEventListener("click", function() {
 
         case "Hexadecimal":
             fromValue = from.value;
-            if (/^[0-9a-fA-F]*$/.test(fromValue)) {
+            if (/^[0-9a-fA-F]*$/.test(fromValue)) {//0-9 a-f input = 123fAc
                 switch (lastBase) {
                     case "Binary":
                         to.value = parseInt(fromValue, 16).toString(2);
@@ -234,7 +242,7 @@ document.getElementById("convert-button").addEventListener("click", function() {
 
         case "Octal":
             fromValue = from.value;
-            if (/^[0-7]*$/.test(fromValue)) {
+            if (/^[0-7]*$/.test(fromValue)) {//04567
                 switch (lastBase) {
                     case "Binary":
                         to.value = parseInt(fromValue, 8).toString(2);
